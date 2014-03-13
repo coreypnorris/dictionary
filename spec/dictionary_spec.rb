@@ -1,5 +1,7 @@
 require 'rspec'
-require 'dictionary'
+require 'term'
+require 'word'
+require 'definition'
 
 describe 'Term' do
 
@@ -7,50 +9,48 @@ describe 'Term' do
    Term.clear
   end
 
-  it 'takes a word and its definition as arguments' do
-    test_term = Term.new('carrot', 'A delicious vegetable.', '1')
-    test_term.should be_an_instance_of Term
-  end
-
   describe '.create' do
-    it 'creates a new instance of the Term class' do
-      test_term = Term.create('pen', 'A writing instrument')
+    it 'creates a new instance of the Term class and creates an instance of the Word class with new words in it' do
+      test_term = Term.create
+      test_term.add_word('hola','spanish')
+      test_term.add_word('ciao','italian')
+      test_term.should be_an_instance_of Term
       Term.all.length.should eq 1
-      test_term.word.should eq 'pen'
+      test_term.words.length.should eq 2
     end
   end
+end
 
-  describe '#remove' do
-    it 'removes an instance from the @@all_terms array' do
-      test_term = Term.create('pen', 'A writing instrument')
-      test_term.remove
-      Term.all.length.should eq 0
+describe 'Word' do
+  describe '.create' do
+    it 'creates a new instace of the Word class' do
+      test_term = Term.create
+      test_term.add_word('hola','spanish')
+      test_term.words[0].should be_an_instance_of Word
+      test_term.words.length.should eq 1
     end
   end
-
-  describe '#edit_term_word' do
-    it 'allows the user to edit a terms word' do
-      test_term = Term.create('pen', 'A writing instrument')
-      test_term.edit_term_word('pencil')
-      test_term.word.should eq 'pencil'
+  describe '.delete' do
+    it 'Deletes the current word' do
+      test_term = Term.create
+      test_term.add_word('hola','spanish')
+      # test_term.search_for_word('hola')
+      test_term.remove_word('hola')
+      test_term.words.length.should eq 0
     end
   end
+end
 
-  describe '#edit_term_definition' do
-    it 'allows the user to edit a terms definition' do
-      test_term = Term.create('pen', 'A writing instrument')
-      test_term.edit_term_definition('A weapon')
-      test_term.definition.should eq 'A weapon'
+describe 'Definition' do
+  describe '.create' do
+    it 'creates a new instace of the Word class' do
+      test_term = Term.create
+      test_term.add_definition('a common greeting', 'english')
+      test_term.definitions.length.should eq 1
     end
   end
-
-  describe '.search' do
-    it 'searches for a specific object' do
-      test_term = Term.create('pen', 'A writing instrument')
-      Term.search('pen').should eq [test_term]
-
-    end
-  end
-
 
 end
+
+
+

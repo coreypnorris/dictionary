@@ -1,4 +1,4 @@
-require './lib/dictionary'
+require './lib/term'
 require 'colorize'
 
 def main_menu
