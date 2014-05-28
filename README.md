@@ -1,4 +1,4 @@
-##triangles
+##Dictionary
 
 ####This is a ruby method that acts as a dictionary.
 
