@@ -1,12 +1,11 @@
 require './lib/term'
-require 'colorize'
 
 def main_menu
-  puts "Press 't' to add a new term".green
-  puts "Press 'l' to list all the terms".blue
-  puts "Press 'e' to edit a term".yellow
-  puts "Press 's' to search for a term".magenta
-  puts "Press 'x' to exit".red
+  puts "Press 't' to add a new term"
+  puts "Press 'l' to list all the terms"
+  puts "Press 'e' to edit a term"
+  puts "Press 's' to search for a term"
+  puts "Press 'x' to exit"
 
   main_choice = gets.chomp
 
@@ -48,12 +47,12 @@ end
 def edit_term
   puts "\n"
   Term.all.each do |term|
-    puts "#{term.id}) ".cyan + term.word.red
+    puts "#{term.id}) " + term.word
   end
   puts "Choose term to edit"
   term_id = gets.chomp.to_i
   current_term = Term.all[term_id-1]
-  puts current_term.word.red + "\n    " + current_term.definition.blue
+  puts current_term.word + "\n    " + current_term.definition
   puts "Enter 'w' to edit word. Enter 'd' to edit definition. \n"
   selection = gets.chomp
   if selection == 'w'
@@ -75,32 +74,9 @@ def search_term
   search_word = gets.chomp
   searched_term = Term.search(search_word)
   puts "\nHERE'S YOUR WORD, B*TCH! \n".magenta
-  puts searched_term.word.red + "\n    " + searched_term.definition.blue
+  puts searched_term.word + "\n    " + searched_term.definition
   puts "\n"
   main_menu
 end
 
-
-
 main_menu
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

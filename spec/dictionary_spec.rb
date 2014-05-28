@@ -34,7 +34,6 @@ describe 'Word' do
     it 'Deletes the current word' do
       test_term = Term.create
       test_term.add_word('hola','spanish')
-      # test_term.search_for_word('hola')
       test_term.remove_word('hola')
       test_term.words.length.should eq 0
     end

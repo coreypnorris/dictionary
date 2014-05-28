@@ -51,14 +51,3 @@ end
 first_term = Term.create('hello', 'sweetie')
 second_term = Term.create('howdy', 'partner')
 third_term = Term.create('what', 'what what')
-# search_word = 'what'
-
-
-# p Term.all
-
-# [1,2,3,4,5].select { |num|  num.even?  }   #=> [2, 4]
-
-
-# p Term.all[index_of_thing].word
-
-
